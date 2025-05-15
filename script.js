@@ -1,29 +1,91 @@
-// Theme toggle
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
-
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-theme');
-    const icon = themeToggle.querySelector('i');
-    icon.classList.toggle('fa-moon');
-    icon.classList.toggle('fa-sun');
+// Initialize AOS (Animate On Scroll)
+AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 100
 });
 
-// Glitch effect
-const glitchText = document.querySelector('.glitch');
+// Theme Toggle Functionality
+const themeToggle = document.querySelector('.theme-toggle');
+const body = document.body;
 
-function createGlitchEffect() {
-    const glitchChar = Math.floor(Math.random() * glitchText.innerText.length);
-    const newChar = Math.random() > 0.5 ? '1' : '0';
-    const glitchedText = glitchText.innerText.slice(0, glitchChar) + newChar + glitchText.innerText.slice(glitchChar + 1);
-    glitchText.dataset.text = glitchedText;
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if
+if (savedTheme) {
+    body.dataset.theme = savedTheme;
+    updateThemeIcon(savedTheme === 'dark');
 }
 
-setInterval(createGlitchEffect, 50);
-// Add this to your existing script.js
+themeToggle.addEventListener('click', () => {
+    const isDark = body.dataset.theme === 'dark';
+    body.dataset.theme = isDark ? 'light' : 'dark';
+    localStorage.setItem('theme', body.dataset.theme);
+    updateThemeIcon(!isDark);
+});
 
-// Animate numbers in stat cards
+function updateThemeIcon(isDark) {
+    const icon = themeToggle.querySelector('i');
+    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+}
+
+// Smooth Scrolling for Navigation Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Scroll to Top Button
+const scrollToTopBtn = document.querySelector('.scroll-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('visible');
+    } else {
+        scrollToTopBtn.classList.remove('visible');
+       }
+});
+
+scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Active Navigation Link Highlight
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.pageYOffset >= sectionTop - sectionHeight / 3) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Animate Stats Counter
 const stats = document.querySelectorAll('.stat-number');
+let animated = false;
 
 function animateStats() {
     stats.forEach(stat => {
@@ -46,93 +108,160 @@ function animateStats() {
     });
 }
 
-// Trigger animation when elements are in view
-const observer = new IntersectionObserver((entries) => {
+// Trigger stats animation when in view
+const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !animated) {
             animateStats();
-            observer.unobserve(entry.target);
+            animated = true;
         }
     });
-});
+}, { threshold: 0.5 });
 
-document.querySelectorAll('.stats-container').forEach((el) => observer.observe(el));
+document.querySelectorAll('.stats-container').forEach((el) => statsObserver.observe(el));
 
-AOS.init({
-    duration: 1000,
-    once: true
-});
-
-// Add to your existing script.js
-
-// Animate skill progress bars
-const animateProgress = () => {
-    const progressBars = document.querySelectorAll('.progress');
-    progressBars.forEach(progress => {
-        progress.style.width = '0%';
-        setTimeout(() => {
-            progress.style.width = progress.parentElement.dataset.progress || '0%';
-        }, 100);
-    });
-};
-
-// Observe progress bars
+// Animate Skill Progress Bars
+const progressBars = document.querySelectorAll('.progress');
 const progressObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            animateProgress();
-            progressObserver.unobserve(entry.target);
+            entry.target.style.width = entry.target.getAttribute('data-progress');
         }
     });
-});
+}, { threshold: 0.5 });
 
-document.querySelectorAll('.skills-grid').forEach(el => progressObserver.observe(el));
+progressBars.forEach(bar => progressObserver.observe(bar));
 
-// Contact Form Handling
+// Form Validation and Submission
 const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', function(e) {
+
+contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    // Add your form submission logic here
     const formData = {
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
         message: document.getElementById('message').value
     };
-    
-    // Example: Console log the form data
-    console.log('Form submitted:', formData);
-    
-    // Reset form
-    contactForm.reset();
-    
-    // Show success message (you can customize this)
-    alert('Message sent successfully!');
-});
 
-// Scroll to Top Button
-const scrollToTopBtn = document.getElementById('scrollToTop');
+    // Basic form validation
+    if (!validateForm(formData)) {
+        showNotification('Please fill all fields correctly', 'error');
+        return;
+    }
 
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        scrollToTopBtn.classList.add('visible');
-    } else {
-        scrollToTopBtn.classList.remove('visible');
+    try {
+        // Simulate form submission
+        await submitForm(formData);
+        showNotification('Message sent successfully!', 'success');
+        contactForm.reset();
+    } catch (error) {
+        showNotification('Failed to send message. Please try again.', 'error');
     }
 });
 
-scrollToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
+function validateForm(data) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return data.name.length > 0 && 
+           emailRegex.test(data.email) && 
+           data.message.length > 0;
+}
 
-// Optional: Add loading animation to submit button
+async function submitForm(data) {
+    // Simulate API call
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log('Form submitted:', data);
+            resolve();
+        }, 1000);
+    });
+}
+
+// Notification System
+function showNotification(message, type) {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+
+    document.body.appendChild(notification);
+
+    // Trigger animation
+    setTimeout(() => notification.classList.add('show'), 10);
+
+    // Remove notification after 3 seconds
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Add loading animation to submit button
 const submitBtn = document.querySelector('.submit-btn');
 submitBtn.addEventListener('click', function() {
-    this.classList.add('loading');
-    setTimeout(() => {
-        this.classList.remove('loading');
-    }, 2000);
+    if (contactForm.checkValidity()) {
+        this.classList.add('loading');
+        setTimeout(() => {
+            this.classList.remove('loading');
+        }, 2000);
+    }
+});
+
+// Type writer effect for hero section
+const heroText = document.querySelector('.hero-text h1');
+if (heroText) {
+    const text = heroText.textContent;
+    heroText.textContent = '';
+    let i = 0;
+
+    function typeWriter() {
+        if (i < text.length) {
+            heroText.textContent += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 100);
+        }
+    }
+
+    // Start animation when hero section is in view
+    const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                typeWriter();
+                heroObserver.unobserve(entry.target);
+            }
+        });
+    });
+
+    heroObserver.observe(heroText);
+}
+
+// Preloader
+window.addEventListener('load', () => {
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
+            preloader.remove();
+        }, 1000);
+    }
+});
+
+// Mobile Navigation Toggle
+const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (mobileNavToggle) {
+    mobileNavToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        mobileNavToggle.classList.toggle('active');
+    });
+}
+
+// Close mobile nav when clicking outside
+document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('active') && 
+        !e.target.closest('.nav-links') && 
+        !e.target.closest('.mobile-nav-toggle')) {
+        navLinks.classList.remove('active');
+        mobileNavToggle.classList.remove('active');
+    }
 });
