@@ -1,100 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abdul Mofil | Resume</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Mofil | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="sidebar" id="sidebar">
-    <div class="sidebar-content">
-      <div class="profile">
-        <div class="profile-picture"></div>
-        <h1>Abdul Mofil</h1>
-        <p>Process Specialist</p>
-      </div>
-      <nav>
-        <a href="#summary" class="nav-item"><i data-lucide="file-text"></i> Summary</a>
-        <a href="#skills" class="nav-item"><i data-lucide="settings"></i> Skills</a>
-        <a href="#experience" class="nav-item"><i data-lucide="briefcase"></i> Experience</a>
-        <a href="#education" class="nav-item"><i data-lucide="book-open"></i> Education</a>
-        <a href="#technical" class="nav-item"><i data-lucide="code"></i> Technical</a>
-      </nav>
-    </div>
-    <div class="mode-toggle">
-      <button class="button" onclick="toggleMode()">🌓 Toggle Mode</button>
-      <a class="button" href="Resume.pdf" download>⬇️ Download PDF</a>
-    </div>
-  </div>
+    <header>
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="logo">AM</div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
 
-  <div class="main">
-    <section id="summary" class="fade-in">
-      <h2><i data-lucide="file-text"></i> Professional Summary</h2>
-      <p>Dynamic and results-driven professional with 6 years of Amazon expertise, including 2 years in strategic project management. Proven track record in optimizing partner processes, streamlining workflows, and driving growth through data-driven solutions and collaboration.</p>
-    </section>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Abdul Mofil</h1>
+                    <h2>Process Specialist</h2>
+                    <p>Transforming business processes with 6 years of Amazon expertise</p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="primary-btn">Get in Touch</a>
+                        <a href="Resume.pdf" class="secondary-btn" download>
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="profile-image.jpg" alt="Abdul Mofil">
+                </div>
+            </div>
+        </section>
 
-    <section id="skills" class="fade-in">
-      <h2><i data-lucide="settings"></i> Core Competencies</h2>
-      <ul class="grid">
-        <li>Process Improvement</li><li>Project Management</li><li>Account Management</li>
-        <li>Ownership & Collaboration</li><li>CRM Tools</li><li>Product Development</li>
-        <li>Data Analysis</li><li>Issue Identification</li><li>Business Development</li>
-      </ul>
-    </section>
+        <section id="about" class="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>Dynamic and results-driven professional with 6 years of Amazon expertise, including 2 years in strategic project management. Proven track record in optimizing partner processes, streamlining workflows, and driving growth through data-driven solutions and collaboration.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>6+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>30+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>$25M+</h3>
+                        <p>Cost Savings</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="experience" class="fade-in">
-      <h2><i data-lucide="briefcase"></i> Career Highlights</h2>
-      <div class="job">
-        <h3>Senior Process Specialist – Microsite SPS L4</h3>
-        <p>Amazon Hyderabad</p>
-        <ul>
-          <li>Handled 30+ projects with SPX teams</li>
-          <li>Resolved a $2.2M reimbursement issue</li>
-          <li>Created Aura automation tool and JSON forms</li>
-          <li>Lean Six Sigma Green Belt Certified</li>
-        </ul>
-      </div>
-      <div class="job">
-        <h3>Selling Partner Support – CRS Mentor L3</h3>
-        <p>Amazon Chennai</p>
-        <ul>
-          <li>Reduced TTR from 12.66 to 3.54 days</li>
-          <li>Launched 3 SOPs, saving $23.3M</li>
-          <li>GEM "Going the Extra Mile" Award</li>
-        </ul>
-      </div>
-      <div class="job">
-        <h3>CS Associate L2</h3>
-        <p>Amazon Coimbatore</p>
-        <ul>
-          <li>Trained new hires as SME</li>
-          <li>ACES Stage 1 Certified</li>
-        </ul>
-      </div>
-    </section>
+        <section id="experience" class="experience">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Senior Process Specialist – Microsite SPS L4</h3>
+                        <p class="company">Amazon Hyderabad</p>
+                        <p class="date">2021 - Present</p>
+                        <ul>
+                            <li>Handled 30+ projects with SPX teams</li>
+                            <li>Resolved a $2.2M reimbursement issue</li>
+                            <li>Created Aura automation tool and JSON forms</li>
+                            <li>Lean Six Sigma Green Belt Certified</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Selling Partner Support – CRS Mentor L3</h3>
+                        <p class="company">Amazon Chennai</p>
+                        <p class="date">2019 - 2021</p>
+                        <ul>
+                            <li>Reduced TTR from 12.66 to 3.54 days</li>
+                            <li>Launched 3 SOPs, saving $23.3M</li>
+                            <li>GEM "Going the Extra Mile" Award</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>CS Associate L2</h3>
+                        <p class="company">Amazon Coimbatore</p>
+                        <p class="date">2017 - 2019</p>
+                        <ul>
+                            <li>Trained new hires as SME</li>
+                            <li>ACES Stage 1 Certified</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="education" class="fade-in">
-      <h2><i data-lucide="book-open"></i> Education</h2>
-      <p><strong>B.E. Electronics & Communication Engineering</strong><br>
-      Dhaanish Ahmed Institute of Technology – CGPA: 7.4</p>
-    </section>
+        <section id="skills" class="skills">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Core Competencies</h3>
+                    <ul class="skill-list">
+                        <li>Process Improvement</li>
+                        <li>Project Management</li>
+                        <li>Account Management</li>
+                        <li>Ownership & Collaboration</li>
+                        <li>CRM Tools</li>
+                        <li>Product Development</li>
+                        <li>Data Analysis</li>
+                        <li>Issue Identification</li>
+                        <li>Business Development</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <ul class="skill-list">
+                        <li>MS Excel</li>
+                        <li>Canva</li>
+                        <li>MS Access</li>
+                           <li>PowerPoint</li>
+                        <li>Power BI</li>
+                        <li>Markdown</li>
+                        <li>CSS & HTML</li>
+                        <li>JavaScript</li>
+                        <li>JSON</li>
+                        <li>AWS</li>
+                        <li>SQL</li>
+                        <li>Minitab</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-    <section id="technical" class="fade-in">
-      <h2><i data-lucide="code"></i> Technical Proficiency</h2>
-      <ul class="grid">
-        <li>MS Excel</li><li>Canva</li><li>MS Access</li><li>PowerPoint</li>
-        <li>Power BI</li><li>Markdown</li><li>CSS & HTML</li><li>JavaScript</li>
-        <li>JSON</li><li>AWS</li><li>SQL</li><li>Minitab</li>
-      </ul>
-    </section>
-  </div>
+        <section id="education" class="education">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <h3>B.E. Electronics & Communication Engineering</h3>
+                <p>Dhaanish Ahmed Institute of Technology</p>
+                <p>CGPA: 7.4</p>
+            </div>
+        </section>
 
-  <script src="script.js"></script>
+        <section id="contact" class="contact">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <p>Feel free to reach out for collaborations or just a friendly hello</p>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> email@example.com</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Hyderabad, India</li>
+                    </ul>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit" class="primary-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Abdul Mofil. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

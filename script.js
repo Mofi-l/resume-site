@@ -1,39 +1,34 @@
-lucide.createIcons();
-
-function toggleMode() {
-  document.body.classList.toggle('dark-mode');
-  document.getElementById('sidebar').classList.toggle('dark-mode');
+// script.js
+function toggleTheme() {
+    document.body.dataset.theme = 
+        document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+    
+    const icon = document.querySelector('.theme-toggle i');
+    icon.classList.toggle('fa-moon');
+    icon.classList.toggle('fa-sun');
 }
 
-// Animate sections on scroll
-const animateSections = () => {
-  const sections = document.querySelectorAll('section');
-  sections.forEach(section => {
-    const sectionTop = section.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-    if (sectionTop < windowHeight * 0.75) {
-      section.classList.add('fade-in');
-    }
-  });
-};
-
-window.addEventListener('scroll', animateSections);
-window.addEventListener('load', animateSections);
-
-// Animate skill items
-anime({
-  targets: '.grid li',
-  scale: [0.5, 1],
-  opacity: [0, 1],
-  delay: anime.stagger(100),
-  easing: 'easeOutElastic(1, .5)'
+// Smooth scroll for navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
 });
 
-// Animate nav items
-anime({
-  targets: '.nav-item',
-  translateX: [-20, 0],
-  opacity: [0, 1],
-  delay: anime.stagger(100),
-  easing: 'easeOutQuad'
+// Intersection Observer for animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+        }
+    });
+}, {
+    threshold: 0.1
+});
+
+document.querySelectorAll('section').forEach((section) => {
+    observer.observe(section);
 });
