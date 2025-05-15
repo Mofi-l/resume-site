@@ -1,203 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abdul Mofil | Resume</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, #f3f4f6, #dbeafe);
-      margin: 0;
-      padding: 0;
-      color: #1f2937;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Mofil - Professional Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    .wrapper {
-      max-width: 900px;
-      margin: 40px auto;
-      background: white;
-      border-radius: 12px;
-      padding: 40px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
-    }
+        body {
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
 
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
 
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #111827;
-      margin-bottom: 10px;
-    }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-    header p {
-      color: #6b7280;
-      font-size: 1.1rem;
-      margin-bottom: 5px;
-    }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
 
-    .contact a {
-      color: #3b82f6;
-      text-decoration: none;
-      margin: 0 10px;
-      font-size: 0.95rem;
-    }
+        .contact-info {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
 
-    section {
-      margin-bottom: 40px;
-    }
+        .section {
+            margin-bottom: 30px;
+        }
 
-    section h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #1d4ed8;
-      border-left: 5px solid #3b82f6;
-      padding-left: 12px;
-      margin-bottom: 16px;
-    }
+        .section-title {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 10px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+        .competencies {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
 
-    .grid li {
-      background: #eff6ff;
-      color: #1e3a8a;
-      padding: 10px 15px;
-      border-radius: 8px;
-      text-align: center;
-      font-weight: 500;
-    }
+        .competency-item {
+            background-color: #f8f9fa;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
 
-    .job {
-      margin-bottom: 25px;
-    }
+        .job {
+            margin-bottom: 25px;
+        }
 
-    .job h3 {
-      margin: 0;
-      color: #111827;
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
+        .job-title {
+            color: #2c3e50;
+            font-weight: bold;
+        }
 
-    .job p {
-      margin: 5px 0 10px;
-      font-style: italic;
-      color: #6b7280;
-    }
+        .job-details {
+            margin-left: 20px;
+        }
 
-    .job ul {
-      padding-left: 20px;
-    }
+        .technical-skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
 
-    .job ul li {
-      margin-bottom: 6px;
-    }
+        .skill {
+            background-color: #e8f4f8;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
 
-    @media (max-width: 600px) {
-      .wrapper {
-        padding: 20px;
-      }
+        ul {
+            padding-left: 20px;
+        }
 
-      header h1 {
-        font-size: 2rem;
-      }
-
-      section h2 {
-        font-size: 1.25rem;
-      }
-    }
-  </style>
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="wrapper">
-    <header>
-      <h1>Abdul Mofil</h1>
-      <p>Process Specialist – Selling Partner Support</p>
-      <div class="contact">
-        <a href="tel:+919384785693">📞 +91 93847 85693</a> |
-        <a href="mailto:abdul1mofil@gmail.com">📧 abdul1mofil@gmail.com</a> |
-        <a href="https://phonetool.amazon.com/users/mofila">🌐 Amazon Profile</a>
-      </div>
-    </header>
+    <div class="container">
+        <div class="header">
+            <h1>Abdul Mofil</h1>
+            <div class="contact-info">
+                <p>Process Specialist – Selling Partner Support</p>
+                <p>📞 ***************3 | 📧 abdul1mofil@gmail.com | 🌐 Amazon Profile</p>
+            </div>
+        </div>
 
-    <section>
-      <h2>Professional Summary</h2>
-      <p>Dynamic and results-driven professional with 6 years of Amazon expertise, including 2 years in strategic project management. Proven track record in optimizing partner processes, streamlining workflows, and driving growth through data-driven solutions and collaboration.</p>
-    </section>
+        <div class="section">
+            <h2 class="section-title">Professional Summary</h2>
+            <p>Dynamic and results-driven professional with 6 years of Amazon expertise, including 2 years in strategic project management. Proven track record in optimizing partner processes, streamlining workflows, and driving growth through data-driven solutions and collaboration.</p>
+        </div>
 
-    <section>
-      <h2>Core Competencies</h2>
-      <ul class="grid">
-        <li>Process Improvement</li><li>Project Management</li><li>Account Management</li>
-        <li>Ownership & Collaboration</li><li>CRM Tools</li><li>Product Development</li>
-        <li>Data Analysis</li><li>Issue Identification</li><li>Business Development</li>
-      </ul>
-    </section>
+        <div class="section">
+            <h2 class="section-title">Core Competencies</h2>
+            <div class="competencies">
+                <div class="competency-item">Process Improvement</div>
+                <div class="competency-item">Project Management</div>
+                <div class="competency-item">Account Management</div>
+                <div class="competency-item">Ownership & Collaboration</div>
+                <div class="competency-item">CRM Tools</div>
+                <div class="competency-item">Product Development</div>
+                <div class="competency-item">Data Analysis</div>
+                <div class="competency-item">Issue Identification</div>
+                <div class="competency-item">Business Development</div>
+            </div>
+        </div>
 
-    <section>
-      <h2>Career Highlights</h2>
+        <div class="section">
+            <h2 class="section-title">Career Highlights</h2>
+            
+            <div class="job">
+                <p class="job-title">Senior Process Specialist, Microsite – SPS L4</p>
+                <p>Amazon Development Center, Hyderabad</p>
+                <ul class="job-details">
+                    <li>Handled 30+ projects with SPX teams enhancing seller and associate experience</li>
+                    <li>Resolved a $2.2M duplicate reimbursement issue via Microsite project</li>
+                    <li>Created automation tools like "Aura" and JSON-based forms for tracking and defect analysis</li>
+                    <li>Lean Six Sigma Green Belt Certified</li>
+                    <li>Received Emerald GEM Award</li>
+                </ul>
+            </div>
 
-      <div class="job">
-        <h3>Senior Process Specialist, Microsite – SPS L4</h3>
-        <p>Amazon Development Center, Hyderabad</p>
-        <ul>
-          <li>Handled 30+ projects with SPX teams enhancing seller and associate experience</li>
-          <li>Resolved a $2.2M duplicate reimbursement issue via Microsite project</li>
-          <li>Created automation tools like “Aura” and JSON-based forms for tracking and defect analysis</li>
-          <li>Lean Six Sigma Green Belt Certified</li>
-          <li>Received Emerald GEM Award</li>
-        </ul>
-      </div>
+            <div class="job">
+                <p class="job-title">Selling Partner Support – CRS Mentor L3</p>
+                <p>Amazon Development Center, Chennai</p>
+                <ul class="job-details">
+                    <li>Mentored new associates ensuring performance metrics & quality</li>
+                    <li>Reduced TTR from 12.66 to 3.54 days through Lean Six Sigma Project</li>
+                    <li>Launched 3 SOPs, saving $23.3M; Introduced Buddy Form Program</li>
+                    <li>Programmed CRS Annotation Program and initiated several process optimizations</li>
+                    <li>GEM "Going the Extra Mile" award recipient</li>
+                </ul>
+            </div>
 
-      <div class="job">
-        <h3>Selling Partner Support – CRS Mentor L3</h3>
-        <p>Amazon Development Center, Chennai</p>
-        <ul>
-          <li>Mentored new associates ensuring performance metrics & quality</li>
-          <li>Reduced TTR from 12.66 to 3.54 days through Lean Six Sigma Project</li>
-          <li>Launched 3 SOPs, saving $23.3M; Introduced Buddy Form Program</li>
-          <li>Programmed CRS Annotation Program and initiated several process optimizations</li>
-          <li>GEM “Going the Extra Mile” award recipient</li>
-        </ul>
-      </div>
+            <div class="job">
+                <p class="job-title">CS Associate L2</p>
+                <p>Amazon Development Center, Coimbatore</p>
+                <ul class="job-details">
+                    <li>SME for new hire training and knowledge transition</li>
+                    <li>ACES Stage 1 certified; Awarded Customer Delight Ambassador</li>
+                </ul>
+            </div>
+        </div>
 
-      <div class="job">
-        <h3>CS Associate L2</h3>
-        <p>Amazon Development Center, Coimbatore</p>
-        <ul>
-          <li>SME for new hire training and knowledge transition</li>
-          <li>ACES Stage 1 certified; Awarded Customer Delight Ambassador</li>
-        </ul>
-      </div>
-    </section>
+        <div class="section">
+            <h2 class="section-title">Education</h2>
+            <p><strong>B.E. Electronics & Communication Engineering</strong></p>
+            <p>Dhaanish Ahmed Institute of Technology – CGPA: 7.4</p>
+        </div>
 
-    <section>
-      <h2>Education</h2>
-      <p><strong>B.E. Electronics & Communication Engineering</strong><br>
-      Dhaanish Ahmed Institute of Technology – CGPA: 7.4</p>
-    </section>
-
-    <section>
-      <h2>Technical Proficiency</h2>
-      <ul class="grid">
-        <li>MS Excel</li><li>Canva</li><li>MS Access</li><li>PowerPoint</li>
-        <li>Power BI</li><li>Markdown</li><li>CSS & HTML</li><li>JavaScript</li>
-        <li>JSON</li><li>AWS</li><li>SQL</li><li>Minitab</li>
-      </ul>
-    </section>
-  </div>
+        <div class="section">
+            <h2 class="section-title">Technical Proficiency</h2>
+            <div class="technical-skills">
+                <div class="skill">MS Excel</div>
+                <div class="skill">Canva</div>
+                <div class="skill">MS Access</div>
+                <div class="skill">PowerPoint</div>
+                <div class="skill">Power BI</div>
+                <div class="skill">Markdown</div>
+                <div class="skill">CSS & HTML</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">JSON</div>
+                <div class="skill">AWS</div>
+                <div class="skill">SQL</div>
+                <div class="skill">Minitab</div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
