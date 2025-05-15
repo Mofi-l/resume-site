@@ -1,200 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdul Mofil - Professional Resume</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abdul Mofil | Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --bg-light: #f9fafb;
+      --bg-dark: #1e293b;
+      --text-light: #1f2937;
+      --text-dark: #f3f4f6;
+      --accent: #3b82f6;
+    }
 
-        body {
-            line-height: 1.6;
-            color: #333;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-        .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
 
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    .sidebar {
+      width: 250px;
+      background-color: #ffffffcc;
+      backdrop-filter: blur(10px);
+      padding: 30px 20px;
+      height: 100vh;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid #e5e7eb;
+    }
 
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
+    .sidebar.dark-mode {
+      background-color: #0f172acc;
+      border-color: #334155;
+    }
 
-        .contact-info {
-            color: #7f8c8d;
-            margin-bottom: 20px;
-        }
+    .sidebar h1 {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+    }
 
-        .section {
-            margin-bottom: 30px;
-        }
+    .sidebar p {
+      margin: 0;
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
 
-        .section-title {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-        }
+    nav {
+      margin-top: 40px;
+    }
 
-        .competencies {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
-            margin-bottom: 20px;
-        }
+    nav a {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+      margin: 12px 0;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
 
-        .competency-item {
-            background-color: #f8f9fa;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 0.9em;
-        }
+    nav a:hover {
+      color: var(--accent);
+    }
 
-        .job {
-            margin-bottom: 25px;
-        }
+    .main {
+      margin-left: 250px;
+      padding: 40px;
+      flex: 1;
+    }
 
-        .job-title {
-            color: #2c3e50;
-            font-weight: bold;
-        }
+    section {
+      margin-bottom: 60px;
+    }
 
-        .job-details {
-            margin-left: 20px;
-        }
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .technical-skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px;
-        }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+    }
 
-        .skill {
-            background-color: #e8f4f8;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-align: center;
-        }
+    .grid li {
+      background: #eff6ff;
+      color: #1e3a8a;
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 500;
+    }
 
-        ul {
-            padding-left: 20px;
-        }
+    body.dark-mode .grid li {
+      background: #1e293b;
+      color: #cbd5e1;
+    }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-        }
-    </style>
+    .job h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .job p {
+      margin: 5px 0 10px;
+      font-style: italic;
+    }
+
+    .job ul {
+      padding-left: 20px;
+    }
+
+    .job ul li {
+      margin-bottom: 6px;
+    }
+
+    .mode-toggle, .pdf-download {
+      margin-top: 30px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      background: var(--accent);
+      color: white;
+      transition: background 0.3s;
+    }
+
+    .button:hover {
+      background: #2563eb;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 20px;
+      }
+
+      .main {
+        margin-left: 0;
+        padding: 20px;
+      }
+
+      nav {
+        display: flex;
+        gap: 20px;
+        margin-top: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Abdul Mofil</h1>
-            <div class="contact-info">
-                <p>Process Specialist – Selling Partner Support</p>
-                <p>📞 ***************3 | 📧 abdul1mofil@gmail.com | 🌐 Amazon Profile</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Professional Summary</h2>
-            <p>Dynamic and results-driven professional with 6 years of Amazon expertise, including 2 years in strategic project management. Proven track record in optimizing partner processes, streamlining workflows, and driving growth through data-driven solutions and collaboration.</p>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Core Competencies</h2>
-            <div class="competencies">
-                <div class="competency-item">Process Improvement</div>
-                <div class="competency-item">Project Management</div>
-                <div class="competency-item">Account Management</div>
-                <div class="competency-item">Ownership & Collaboration</div>
-                <div class="competency-item">CRM Tools</div>
-                <div class="competency-item">Product Development</div>
-                <div class="competency-item">Data Analysis</div>
-                <div class="competency-item">Issue Identification</div>
-                <div class="competency-item">Business Development</div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Career Highlights</h2>
-            
-            <div class="job">
-                <p class="job-title">Senior Process Specialist, Microsite – SPS L4</p>
-                <p>Amazon Development Center, Hyderabad</p>
-                <ul class="job-details">
-                    <li>Handled 30+ projects with SPX teams enhancing seller and associate experience</li>
-                    <li>Resolved a $2.2M duplicate reimbursement issue via Microsite project</li>
-                    <li>Created automation tools like "Aura" and JSON-based forms for tracking and defect analysis</li>
-                    <li>Lean Six Sigma Green Belt Certified</li>
-                    <li>Received Emerald GEM Award</li>
-                </ul>
-            </div>
-
-            <div class="job">
-                <p class="job-title">Selling Partner Support – CRS Mentor L3</p>
-                <p>Amazon Development Center, Chennai</p>
-                <ul class="job-details">
-                    <li>Mentored new associates ensuring performance metrics & quality</li>
-                    <li>Reduced TTR from 12.66 to 3.54 days through Lean Six Sigma Project</li>
-                    <li>Launched 3 SOPs, saving $23.3M; Introduced Buddy Form Program</li>
-                    <li>Programmed CRS Annotation Program and initiated several process optimizations</li>
-                    <li>GEM "Going the Extra Mile" award recipient</li>
-                </ul>
-            </div>
-
-            <div class="job">
-                <p class="job-title">CS Associate L2</p>
-                <p>Amazon Development Center, Coimbatore</p>
-                <ul class="job-details">
-                    <li>SME for new hire training and knowledge transition</li>
-                    <li>ACES Stage 1 certified; Awarded Customer Delight Ambassador</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Education</h2>
-            <p><strong>B.E. Electronics & Communication Engineering</strong></p>
-            <p>Dhaanish Ahmed Institute of Technology – CGPA: 7.4</p>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Technical Proficiency</h2>
-            <div class="technical-skills">
-                <div class="skill">MS Excel</div>
-                <div class="skill">Canva</div>
-                <div class="skill">MS Access</div>
-                <div class="skill">PowerPoint</div>
-                <div class="skill">Power BI</div>
-                <div class="skill">Markdown</div>
-                <div class="skill">CSS & HTML</div>
-                <div class="skill">JavaScript</div>
-                <div class="skill">JSON</div>
-                <div class="skill">AWS</div>
-                <div class="skill">SQL</div>
-                <div class="skill">Minitab</div>
-            </div>
-        </div>
+  <div class="sidebar" id="sidebar">
+    <div>
+      <h1>Abdul Mofil</h1>
+      <p>Process Specialist</p>
+      <nav>
+        <a href="#summary">Summary</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#technical">Technical</a>
+      </nav>
     </div>
+    <div class="mode-toggle">
+      <button class="button" onclick="toggleMode()">🌓 Toggle Mode</button>
+      <a class="button" href="Resume.pdf" download>⬇️ Download PDF</a>
+    </div>
+  </div>
+
+  <div class="main">
+    <section id="summary">
+      <h2><i data-lucide="file-text"></i> Professional Summary</h2>
+      <p>Dynamic and results-driven professional with 6 years of Amazon expertise, including 2 years in strategic project management. Proven track record in optimizing partner processes, streamlining workflows, and driving growth through data-driven solutions and collaboration.</p>
+    </section>
+
+    <section id="skills">
+      <h2><i data-lucide="settings"></i> Core Competencies</h2>
+      <ul class="grid">
+        <li>Process Improvement</li><li>Project Management</li><li>Account Management</li>
+        <li>Ownership & Collaboration</li><li>CRM Tools</li><li>Product Development</li>
+        <li>Data Analysis</li><li>Issue Identification</li><li>Business Development</li>
+      </ul>
+    </section>
+
+    <section id="experience">
+      <h2><i data-lucide="briefcase"></i> Career Highlights</h2>
+      <div class="job">
+        <h3>Senior Process Specialist – Microsite SPS L4</h3>
+        <p>Amazon Hyderabad</p>
+        <ul>
+          <li>Handled 30+ projects with SPX teams</li>
+          <li>Resolved a $2.2M reimbursement issue</li>
+          <li>Created Aura automation tool and JSON forms</li>
+          <li>Lean Six Sigma Green Belt Certified</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>Selling Partner Support – CRS Mentor L3</h3>
+        <p>Amazon Chennai</p>
+        <ul>
+          <li>Reduced TTR from 12.66 to 3.54 days</li>
+          <li>Launched 3 SOPs, saving $23.3M</li>
+          <li>GEM "Going the Extra Mile" Award</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>CS Associate L2</h3>
+        <p>Amazon Coimbatore</p>
+        <ul>
+          <li>Trained new hires as SME</li>
+          <li>ACES Stage 1 Certified</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2><i data-lucide="book-open"></i> Education</h2>
+      <p><strong>B.E. Electronics & Communication Engineering</strong><br>
+      Dhaanish Ahmed Institute of Technology – CGPA: 7.4</p>
+    </section>
+
+    <section id="technical">
+      <h2><i data-lucide="code"></i> Technical Proficiency</h2>
+      <ul class="grid">
+        <li>MS Excel</li><li>Canva</li><li>MS Access</li><li>PowerPoint</li>
+        <li>Power BI</li><li>Markdown</li><li>CSS & HTML</li><li>JavaScript</li>
+        <li>JSON</li><li>AWS</li><li>SQL</li><li>Minitab</li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      document.getElementById('sidebar').classList.toggle('dark-mode');
+    }
+  </script>
 </body>
 </html>
