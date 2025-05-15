@@ -1,85 +1,134 @@
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f7fa;
-  color: #333;
-  line-height: 1.6;
+/* Reset & base styles */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(to right, #f4f7fa, #eaf1f8);
+  color: #333;
+  line-height: 1.7;
+  padding: 30px 10px;
 }
 
 .container {
   max-width: 960px;
-  margin: 30px auto;
-  padding: 20px;
-  background: #ffffff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  border-radius: 8px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 header h1 {
-  margin: 0;
-  font-size: 2.5em;
-  color: #0b5394;
+  font-size: 2.5rem;
+  color: #1a237e;
+  margin-bottom: 10px;
 }
 
 header p {
-  font-size: 1.2em;
-  margin: 5px 0;
-  color: #555;
+  font-size: 1.2rem;
+  color: #5c6bc0;
 }
 
 .contact a {
-  color: #0b5394;
+  display: inline-block;
+  color: #1a237e;
+  margin: 0 10px;
+  font-size: 0.95rem;
   text-decoration: none;
-  margin: 0 8px;
+  transition: color 0.3s ease;
+}
+
+.contact a:hover {
+  color: #3949ab;
 }
 
 h2 {
-  border-bottom: 2px solid #0b5394;
-  padding-bottom: 6px;
-  color: #0b5394;
+  font-size: 1.5rem;
+  color: #0d47a1;
+  border-left: 6px solid #1e88e5;
+  padding-left: 12px;
+  margin: 30px 0 15px;
 }
 
 .job h3 {
-  margin: 10px 0 5px;
-  color: #444;
+  color: #2c3e50;
+  margin-top: 15px;
+  font-weight: 600;
 }
 
 .job p {
-  margin: 0;
-  font-style: italic;
   color: #777;
+  font-style: italic;
+  margin-bottom: 8px;
 }
 
 ul {
   padding-left: 20px;
+  margin-top: 10px;
+}
+
+ul li {
+  margin-bottom: 8px;
 }
 
 ul.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   list-style: none;
-  padding: 0;
+  padding-left: 0;
+  margin-top: 10px;
+  gap: 10px;
 }
 
 ul.grid li {
-  background-color: #e9f1fc;
+  background: #e3f2fd;
+  color: #0d47a1;
   padding: 8px 12px;
-  border-radius: 5px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  text-align: center;
 }
 
-@media (max-width: 600px) {
+section {
+  margin-bottom: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   .container {
-    padding: 15px;
+    padding: 20px;
   }
 
-  ul.grid {
-    grid-template-columns: 1fr;
+  header h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .contact {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .contact a {
+    display: block;
+    margin: 5px 0;
   }
 }
