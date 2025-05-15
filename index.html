@@ -1,13 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Abdul Mofil | Resume</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom right, #f3f4f6, #dbeafe);
+      margin: 0;
+      padding: 0;
+      color: #1f2937;
+    }
+
+    .wrapper {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #6b7280;
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .contact a {
+      color: #3b82f6;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 0.95rem;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    section h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1d4ed8;
+      border-left: 5px solid #3b82f6;
+      padding-left: 12px;
+      margin-bottom: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .grid li {
+      background: #eff6ff;
+      color: #1e3a8a;
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .job {
+      margin-bottom: 25px;
+    }
+
+    .job h3 {
+      margin: 0;
+      color: #111827;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .job p {
+      margin: 5px 0 10px;
+      font-style: italic;
+      color: #6b7280;
+    }
+
+    .job ul {
+      padding-left: 20px;
+    }
+
+    .job ul li {
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 600px) {
+      .wrapper {
+        padding: 20px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section h2 {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
+  <div class="wrapper">
     <header>
       <h1>Abdul Mofil</h1>
       <p>Process Specialist – Selling Partner Support</p>
@@ -34,9 +149,10 @@
 
     <section>
       <h2>Career Highlights</h2>
+
       <div class="job">
         <h3>Senior Process Specialist, Microsite – SPS L4</h3>
-        <p><strong>Amazon Development Center, Hyderabad</strong></p>
+        <p>Amazon Development Center, Hyderabad</p>
         <ul>
           <li>Handled 30+ projects with SPX teams enhancing seller and associate experience</li>
           <li>Resolved a $2.2M duplicate reimbursement issue via Microsite project</li>
@@ -48,7 +164,7 @@
 
       <div class="job">
         <h3>Selling Partner Support – CRS Mentor L3</h3>
-        <p><strong>Amazon Development Center, Chennai</strong></p>
+        <p>Amazon Development Center, Chennai</p>
         <ul>
           <li>Mentored new associates ensuring performance metrics & quality</li>
           <li>Reduced TTR from 12.66 to 3.54 days through Lean Six Sigma Project</li>
@@ -60,7 +176,7 @@
 
       <div class="job">
         <h3>CS Associate L2</h3>
-        <p><strong>Amazon Development Center, Coimbatore</strong></p>
+        <p>Amazon Development Center, Coimbatore</p>
         <ul>
           <li>SME for new hire training and knowledge transition</li>
           <li>ACES Stage 1 certified; Awarded Customer Delight Ambassador</li>
