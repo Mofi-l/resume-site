@@ -1,4 +1,7 @@
 /* Base Styles and Variables */
+/* Add this to your CSS file, right after your initial :root variables */
+
+/* Light theme (default) variables */
 :root {
     --primary-color: #4a00e0;
     --secondary-color: #8e2de2;
@@ -6,8 +9,132 @@
     --background-color: #f4f4f4;
     --accent-color: #ff6b6b;
     --white: #ffffff;
-    --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --header-bg: rgba(255, 255, 255, 0.9);
+}
+
+/* Dark theme variables */
+.dark-theme {
+    --primary-color: #8e2de2;
+    --secondary-color: #4a00e0;
+    --text-color: #e4e4e4;
+    --background-color: #121212;
+    --accent-color: #ff6b6b;
+    --white: #1a1a1a;
+    --card-bg: #1e1e1e;
+    --border-color: #2d2d2d;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --header-bg: rgba(18, 18, 18, 0.9);
+}
+
+/* Update these existing elements to use the new variables */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.header {
+    background-color: var(--header-bg);
+}
+
+.card,
+.timeline-content,
+.skill-card,
+.project-card,
+.contact-card,
+.contact-form-container {
+    background-color: var(--card-bg);
+}
+
+.stat-card,
+.cert-card {
+    background-color: var(--card-bg);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+/* Add smooth transition for theme switching */
+body,
+.header,
+.card,
+.timeline-content,
+.skill-card,
+.project-card,
+.contact-card,
+.contact-form-container,
+.stat-card,
+.cert-card {
+    transition: all 0.3s ease;
+}
+
+/* Update form elements for dark mode */
+.dark-theme .input-group input,
+.dark-theme .input-group textarea {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+/* Update links for dark mode */
+.dark-theme .nav-link {
+    color: var(--text-color);
+}
+
+.dark-theme .nav-link:hover {
+    color: var(--accent-color);
+}
+
+/* Update theme toggle button */
+.theme-toggle {
+    color: var(--text-color);
+}
+
+/* Add styles for the theme toggle icon */
+.theme-toggle i {
+    font-size: 1.2rem;
+}
+
+.dark-theme .fa-sun {
+    color: #ffd700;
+}
+
+.dark-theme .timeline::before {
+    background: var(--secondary-color);
+}
+
+.dark-theme .section-line {
+    background: var(--accent-color);
+}
+
+/* Update progress bars for dark mode */
+.dark-theme .progress-bar {
+    background: var(--border-color);
+}
+
+/* Update social links for dark mode */
+.dark-theme .social-link {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .social-link:hover {
+    background: var(--accent-color);
+    color: var(--white);
+}
+
+/* Footer dark mode styles */
+.dark-theme .footer {
+    background: var(--primary-color);
+}
+
+/* Scroll to top button dark mode styles */
+.dark-theme .scroll-to-top {
+    background: var(--primary-color);
+    color: var(--text-color);
+}
+
+.dark-theme .scroll-to-top:hover {
+    background: var(--secondary-color);
 }
 
 /* Global Styles */

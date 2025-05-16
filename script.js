@@ -2,14 +2,26 @@
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    body.classList.add('dark-theme');
+    themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+}
+
 themeToggle.addEventListener('click', () => {
     body.classList.toggle('dark-theme');
     const icon = themeToggle.querySelector('i');
-    icon.classList.toggle('fa-moon');
-    icon.classList.toggle('fa-sun');
-    // Optionally save the theme preference to localStorage
-    localStorage.setItem('theme', body.classList.contains('dark-theme') ? 'dark' : 'light');
+    
+    if (body.classList.contains('dark-theme')) {
+        icon.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        icon.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('theme', 'light');
+    }
 });
+
 
 // Load saved theme preference
 if (localStorage.getItem('theme') === 'dark') {
