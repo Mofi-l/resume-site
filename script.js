@@ -154,3 +154,53 @@ submitBtn.addEventListener('click', function() {
         this.classList.remove('loading');
     }, 2000);
 });
+
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.3
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.timeline-item').forEach(item => {
+    observer.observe(item);
+});
+
+/* JavaScript for Progress Bars */
+document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const progress = entry.target.querySelector('.progress');
+                const targetWidth = progress.parentElement.dataset.progress || '0%';
+                progress.style.width = targetWidth;
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.skill-card').forEach(card => {
+        observer.observe(card);
+    });
+});
+
+/* JavaScript for animations */
+document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.contact-card, .contact-form-container').forEach(el => {
+        observer.observe(el);
+    });
+});

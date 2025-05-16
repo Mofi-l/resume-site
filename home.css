@@ -1,0 +1,328 @@
+/* Modern Home Section Styles */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    background: var(--darker-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Effects */
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(45deg, 
+            rgba(172, 124, 80, 0.03) 25%, 
+            transparent 25%,
+            transparent 75%,
+            rgba(172, 124, 80, 0.03) 75%),
+        linear-gradient(45deg, 
+            rgba(172, 124, 80, 0.03) 25%,
+            transparent 25%,
+            transparent 75%,
+            rgba(172, 124, 80, 0.03) 75%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    animation: backgroundMove 15s linear infinite;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        transparent 0%,
+        var(--darker-bg) 70%
+    );
+    animation: rotate 30s linear infinite;
+}
+
+/* Content Wrapper */
+.hero-content {
+    max-width: 600px;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: contentFadeIn 1s ease-out forwards;
+}
+
+/* Name Animation */
+.glitch {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    text-shadow: 
+        2px 2px 0px var(--secondary-color),
+        -2px -2px 0px var(--accent-color);
+    position: relative;
+    display: inline-block;
+    animation: glitchText 3s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.glitch::before {
+    animation: glitchOffset 2s infinite;
+    text-shadow: -2px 0 var(--accent-color);
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+.glitch::after {
+    animation: glitchOffset 2s infinite reverse;
+    text-shadow: 2px 0 var(--secondary-color);
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+
+/* Subtitle Styling */
+.subtitle {
+    font-size: 1.8rem;
+    color: var(--text-secondary);
+    margin: 1.5rem 0;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.6s ease-out 0.3s forwards;
+}
+
+.subtitle::before {
+    content: '{ ';
+    color: var(--primary-color);
+}
+
+.subtitle::after {
+    content: ' }';
+    color: var(--primary-color);
+}
+
+/* Hero Text */
+.hero-text {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin: 2rem 0;
+    max-width: 500px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.6s ease-out 0.6s forwards;
+    line-height: 1.8;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.6s ease-out 0.9s forwards;
+}
+
+.btn {
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: var(--bounce);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: var(--gradient-2);
+    color: var(--text-primary);
+    border: none;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    position: relative;
+    z-index: 1;
+}
+
+.btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--gradient-2);
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.btn-secondary:hover {
+    color: var(--text-primary);
+    border-color: transparent;
+}
+
+.btn-secondary:hover::before {
+    width: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--neon-shadow);
+}
+
+/* Hero Image */
+.hero-image {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: imageFadeIn 1s ease-out 1.2s forwards;
+}
+
+.profile-img {
+    width: 350px;
+    height: 350px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    object-fit: cover;
+    border: 3px solid transparent;
+    background: linear-gradient(var(--dark-bg), var(--dark-bg)) padding-box,
+                var(--gradient-1) border-box;
+    animation: morphing 8s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes backgroundMove {
+    0% { background-position: 0 0, 30px 30px; }
+    100% { background-position: 60px 60px, 90px 90px; }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes glitchText {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitchOffset {
+    0%, 100% { transform: translate(0); }
+    50% { transform: translate(2px); }
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes contentFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes imageFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes morphing {
+    0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+    100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero {
+        padding-top: 100px;
+    }
+    
+    .glitch {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+    }
+    
+    .hero-image {
+        margin-top: 50px;
+    }
+    
+    .profile-img {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media (max-width: 576px) {
+    .glitch {
+        font-size: 2.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1.4rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
