@@ -189,18 +189,3 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(card);
     });
 });
-
-/* JavaScript for animations */
-document.addEventListener('DOMContentLoaded', () => {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.contact-card, .contact-form-container').forEach(el => {
-        observer.observe(el);
-    });
-});
