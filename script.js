@@ -22,6 +22,59 @@ themeToggle.addEventListener('click', () => {
   }
 });
 
+// Typing effect
+class TypeWriter {
+  constructor(txtElement, words, wait = 3000) {
+    this.txtElement = txtElement;
+    this.words = words;
+    this.txt = '';
+    this.wordIndex = 0;
+    this.wait = parseInt(wait, 10);
+    this.type();
+    this.isDeleting = false;
+  }
+
+  type() {
+    const current = this.wordIndex % this.words.length;
+    const fullTxt = this.words[current];
+
+    if(this.isDeleting) {
+      this.txt = fullTxt.substring(0, this.txt.length - 1);
+    } else {
+      this.txt = fullTxt.substring(0, this.txt.length + 1);
+    }
+
+    this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
+
+    let typeSpeed = 100;
+
+    if(this.isDeleting) {
+      typeSpeed /= 2;
+    }
+
+    if(!this.isDeleting && this.txt === fullTxt) {
+      typeSpeed = this.wait;
+      this.isDeleting = true;
+    } else if(this.isDeleting && this.txt === '') {
+      this.isDeleting = false;
+      this.wordIndex++;
+      typeSpeed = 500;
+    }
+
+    setTimeout(() => this.type(), typeSpeed);
+  }
+}
+
+// Init typing effect
+document.addEventListener('DOMContentLoaded', init);
+
+function init() {
+  const txtElement = document.querySelector('.typing-text');
+  const words = ['Senior Process Specialist', 'Project Manager', 'Innovation Leader'];
+  const wait = 3000;
+  new TypeWriter(txtElement, words, wait);
+}
+
 // Glitch effect on name text
 const glitchText = document.querySelector('.glitch');
 function createGlitchEffect() {
@@ -31,7 +84,18 @@ function createGlitchEffect() {
   const glitched = text.slice(0, glitchCharIndex) + newChar + text.slice(glitchCharIndex + 1);
   glitchText.dataset.text = glitched;
 }
-setInterval(createGlitchEffect, 200); // subtle glitch every 200ms
+setInterval(createGlitchEffect, 200);
+
+// Parallax effect for floating elements
+document.addEventListener('mousemove', (e) => {
+  const floatItems = document.querySelectorAll('.float-item');
+  floatItems.forEach(item => {
+    const speed = item.dataset.speed;
+    const x = (window.innerWidth - e.pageX * speed) / 100;
+    const y = (window.innerHeight - e.pageY * speed) / 100;
+    item.style.transform = `translateX(${x}px) translateY(${y}px)`;
+  });
+});
 
 // Animate numbers in stat cards when visible
 const stats = document.querySelectorAll('.stat-number');
@@ -56,7 +120,7 @@ function animateStats() {
   });
 }
 
-// IntersectionObserver to trigger stats animation once when stats container is visible
+// IntersectionObserver for stats
 const statsObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -67,18 +131,17 @@ const statsObserver = new IntersectionObserver(entries => {
 });
 document.querySelectorAll('.stats-container').forEach(el => statsObserver.observe(el));
 
-// Initialize AOS (Animate On Scroll)
+// Initialize AOS
 AOS.init({
   duration: 1000,
   once: true
 });
 
-// Animate skill progress bars on scroll
+// Animate skill progress bars
 const progressBars = document.querySelectorAll('.progress');
 
 function animateProgressBars() {
   progressBars.forEach(progress => {
-    // Get target width from parent data attribute or default to 0%
     const targetWidth = progress.parentElement.dataset.progress || '0%';
     progress.style.width = targetWidth;
   });
@@ -95,7 +158,6 @@ const progressObserver = new IntersectionObserver((entries, observer) => {
 
 document.querySelectorAll('.skills-grid').forEach(grid => progressObserver.observe(grid));
 
-
 // Contact form handling
 const contactForm = document.getElementById('contactForm');
 
@@ -108,10 +170,8 @@ contactForm.addEventListener('submit', (e) => {
     message: document.getElementById('message')?.value || ''
   };
 
-  // For demo, just log the data
   console.log('Form submitted:', formData);
 
-  // Simulate async submission & reset form
   setTimeout(() => {
     contactForm.reset();
     alert('Message sent successfully!');
@@ -133,8 +193,7 @@ scrollToTopBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-
-// Timeline items animation on scroll
+// Timeline items animation
 const timelineItems = document.querySelectorAll('.timeline-item');
 
 const timelineObserverOptions = {
@@ -154,8 +213,7 @@ const timelineObserver = new IntersectionObserver((entries, observer) => {
 
 timelineItems.forEach(item => timelineObserver.observe(item));
 
-
-// Animate individual skill cards' progress bars when visible (more precise)
+// Individual skill cards animation
 document.addEventListener('DOMContentLoaded', () => {
   const skillCards = document.querySelectorAll('.skill-card');
   const cardObserver = new IntersectionObserver((entries, observer) => {
@@ -172,8 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
   skillCards.forEach(card => cardObserver.observe(card));
 });
 
-
-// Submit button loading animation
+// Submit button animation
 const submitBtn = document.querySelector('.submit-btn');
 if (submitBtn) {
   submitBtn.addEventListener('click', function() {
