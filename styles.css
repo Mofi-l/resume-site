@@ -478,140 +478,197 @@ a:hover {
 
 /* Experience Section */
 .experience {
-  padding: 100px 6%;
-  background: var(--dark-bg);
-  position: relative;
+    padding: 100px 6%;
+    background: var(--dark-bg);
+    position: relative;
+    overflow: hidden;
 }
 
 .timeline {
-  max-width: 1100px;
-  margin: 60px auto 0;
-  position: relative;
-  padding: 40px 0;
+    max-width: 1200px;
+    margin: 60px auto 0;
+    position: relative;
+    padding: 40px 0;
 }
 
 .timeline::before {
-  content: '';
-  position: absolute;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--primary-color),
-    var(--secondary-color),
-    transparent
-  );
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 3px;
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        transparent,
+        var(--primary-color) 15%,
+        var(--secondary-color) 85%,
+        transparent
+    );
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(2, 132, 199, 0.2);
 }
 
 .timeline-item {
-  position: relative;
-  width: 50%;
-  margin-bottom: 90px;
-  padding: 0 30px;
+    position: relative;
+    width: 50%;
+    margin-bottom: 80px;
+    padding: 0 40px;
 }
 
 .timeline-item:nth-child(odd) {
-  left: 0;
-  text-align: right;
+    left: 0;
+    text-align: right;
 }
 
 .timeline-item:nth-child(even) {
-  left: 50%;
-  text-align: left;
+    left: 50%;
+    text-align: left;
 }
 
 .timeline-dot {
-  position: absolute;
-  top: 0;
-  width: 24px;
-  height: 24px;
-  background: var(--gradient-2);
-  border-radius: 50%;
-  box-shadow: 0 0 20px var(--primary-color);
-  border: 3px solid var(--dark-bg);
-  transition: var(--transition);
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    background: var(--gradient-2);
+    border-radius: 50%;
+    box-shadow: 0 0 25px var(--primary-color);
+    border: 3px solid var(--dark-bg);
+    transition: var(--transition);
+    z-index: 2;
 }
 
 .timeline-item:nth-child(odd) .timeline-dot {
-  right: -38px;
+    right: -50px;
 }
 
 .timeline-item:nth-child(even) .timeline-dot {
-  left: -38px;
+    left: -50px;
 }
 
 .timeline-content {
-  background: var(--card-bg);
-  padding: 30px 35px;
-  border-radius: 20px;
-  border: var(--border-light);
-  box-shadow: 0 5px 30px rgba(0,0,0,0.3);
-  transition: var(--bounce);
-  position: relative;
+    background: var(--card-bg);
+    padding: 35px;
+    border-radius: 16px;
+    border: var(--border-light);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: var(--bounce);
+    position: relative;
+    backdrop-filter: blur(10px);
 }
 
 .timeline-content:hover {
-  transform: translateY(-8px);
-  border: var(--border-neon);
-  box-shadow: var(--glow-shadow);
+    transform: translateY(-8px);
+    border: var(--border-neon);
+    box-shadow: var(--glow-shadow);
 }
 
 .timeline-header h3 {
-  color: var(--primary-color);
-  font-size: 1.6rem;
-  margin-bottom: 12px;
-  letter-spacing: 0.06em;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    letter-spacing: 0.06em;
+    font-weight: 700;
 }
 
 .company {
-  display: inline-block;
-  padding: 7px 20px;
-  background: rgba(172, 124, 80, 0.12);
-  border-radius: 30px;
-  color: var(--secondary-color);
-  font-weight: 600;
-  margin-bottom: 18px;
-  letter-spacing: 0.04em;
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(2, 132, 199, 0.1);
+    border-radius: 30px;
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 0.04em;
+    border: 1px solid rgba(2, 132, 199, 0.2);
 }
 
 .date {
-  color: var(--text-secondary);
-  font-size: 1rem;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-style: italic;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-style: italic;
+    opacity: 0.8;
 }
 
 .achievement-list {
-  list-style: none;
-  color: var(--text-secondary);
-  font-weight: 500;
-  font-size: 1rem;
-  line-height: 1.6;
-  padding-left: 0;
+    list-style: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    padding-left: 0;
 }
 
 .achievement-list li {
-  margin-bottom: 14px;
-  padding-left: 28px;
-  position: relative;
+    margin-bottom: 16px;
+    padding-left: 32px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
 }
 
-.achievement-list li::before {
-  content: '➤';
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--primary-color);
-  font-size: 1.2rem;
-  line-height: 1;
+.achievement-list li i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-left: -32px;
+    margin-top: 4px;
 }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .timeline::before {
+        left: 40px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 80px;
+        padding-right: 20px;
+    }
+
+    .timeline-item:nth-child(odd) {
+        text-align: left;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+        right: auto;
+        left: 30px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .timeline-content {
+        padding: 25px;
+    }
+
+    .timeline-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .company {
+        padding: 6px 16px;
+        font-size: 0.9rem;
+    }
+
+    .date {
+        font-size: 1rem;
+    }
+
+    .achievement-list {
+        font-size: 1rem;
+    }
+}
+
 
 /* Skills Section */
 .skills {
