@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', init);
 
 function init() {
   const txtElement = document.querySelector('.typing-text');
-  const words = ['Senior Process Specialist', 'Project Manager', 'Innovation Leader'];
+  const words = ['Transforming Selling Partner Support business processes with 6 years of Amazon expertise'];
   const wait = 3000;
   new TypeWriter(txtElement, words, wait);
 }
