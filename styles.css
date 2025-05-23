@@ -1270,22 +1270,13 @@ a:hover {
   font-size: 1rem;
 }
 
-.modern-contact .form-row {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 25px;
-}
-.modern-contact .form-row .input-group {
-  flex: 1;
-}
-
 .contact-link:hover {
   background: var(--gradient-2);
   color: var(--text-primary);
   border: none;
 }
 
-/* Contact Form */
+/* Contact Form Container */
 .contact-form-container {
   background: var(--card-bg);
   border-radius: 25px;
@@ -1308,7 +1299,6 @@ a:hover {
 }
 
 .input-group {
-  margin-bottom: 25px;
   position: relative;
 }
 
@@ -1337,7 +1327,7 @@ a:hover {
 }
 
 .input-group textarea {
-  min-height: 170px;
+  min-height: 100px;
   line-height: 1.4;
   resize: vertical;
 }
@@ -1372,11 +1362,66 @@ a:hover {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  margin-top: 20px;
 }
 
 .submit-btn:hover {
   transform: translateY(-4px);
   box-shadow: 0 14px 40px rgba(255, 166, 77, 0.75);
+}
+
+/* Horizontal Layout for Contact Form */
+.contact-form {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.contact-form .form-group {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.contact-form .input-group {
+  flex: 1 1 33%;
+}
+
+.contact-form textarea {
+  flex: 1 1 66%;
+  min-height: 100%;
+  height: 100px;
+}
+
+.contact-form .submit-btn {
+  flex: 1 1 100%;
+}
+
+/* Responsive Handling */
+@media (max-width: 768px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form {
+    flex-direction: column;
+  }
+
+  .contact-form .form-group {
+    flex-direction: column;
+  }
+
+  .contact-form .input-group,
+  .contact-form textarea {
+    flex: 1 1 100%;
+  }
+
+  .contact-form .submit-btn {
+    width: 100%;
+  }
 }
 /*------------------------------------------------------------------------------------------------*/
 
